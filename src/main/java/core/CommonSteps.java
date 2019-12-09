@@ -1,6 +1,5 @@
 package core;
 
-import aspects.LogSelenide;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
@@ -9,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class CommonSteps {
-//    @LogSelenide
+
     @Step("click on element: '{locator.description}'")
     public static void clickOnElement(Locator locator) {
         $(locator.getBy()).click();
