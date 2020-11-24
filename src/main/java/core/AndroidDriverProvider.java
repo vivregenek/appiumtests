@@ -1,9 +1,8 @@
 package core;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.WebDriverProvider;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -11,7 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AndroidDriverProvider {
-    public static WebDriver getAndroidNativeAppDriver() throws MalformedURLException {
+    public static WebDriver getAndroidNativeAppDriver() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(AndroidMobileCapabilityType.VERSION, "4.4.2");
         capabilities.setCapability("automationName", System.getProperty("automationName"));
@@ -27,7 +26,7 @@ public class AndroidDriverProvider {
         }
     }
 
-    public static WebDriver getChrome() throws MalformedURLException {
+    public static WebDriver getChrome() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(AndroidMobileCapabilityType.VERSION, "4.4.2");
         capabilities.setCapability("platformName", "Android");
@@ -36,6 +35,17 @@ public class AndroidDriverProvider {
         capabilities.setCapability("deviceName", "Android Emulator");
         try {
             return new AndroidDriver(new URL(System.getProperty("hub")), capabilities);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static WebDriver getWindowsCalculator() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("app", "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App");
+        try {
+//            WindowsDriver tmp = new WindowsDriver(new URL("http://127.0.0.1:4723"), capabilities).findElementByAccessibilityId();
+            return new WindowsDriver(new URL("http://127.0.0.1:4723"), capabilities);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }

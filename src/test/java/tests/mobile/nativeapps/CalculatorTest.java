@@ -1,4 +1,4 @@
-package tests.nativeapps;
+package tests.mobile.nativeapps;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,5 @@ public class CalculatorTest extends BaseNativeAppTest {
         elementShouldHasText(OPERATIONS_FOR_CALCULATIONS_FIELD, "6");
         clickOnElement(EQUAL);
         elementShouldHasText(RESULT_OF_CALCULATION_FIELD, "6");
-        String str = getAttributeValue(EQUAL, "color");
-        System.out.println(str);
     }
 }

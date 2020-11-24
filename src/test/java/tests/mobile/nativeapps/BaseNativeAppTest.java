@@ -1,4 +1,4 @@
-package tests.nativeapps;
+package tests.mobile.nativeapps;
 
 import com.codeborne.selenide.WebDriverRunner;
 import core.AndroidDriverProvider;
